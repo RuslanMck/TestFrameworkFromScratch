@@ -1,7 +1,6 @@
 package selenideexample;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
-import com.sun.tools.javac.comp.Todo;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.Test;
 
@@ -14,7 +13,8 @@ public class SelenideExampleTest {
 
     @Test
     public void selenideTest(){
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(false));
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true)
+                .savePageSource(false));
         open("https://google.com");
 
         //TODO Добавить проверку на отображение cookie popup
