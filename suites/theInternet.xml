@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TheInternet" verbose="1" >
+    <test name="The Internet Login page test" >
+        <classes>
+            <class name="theinternet.TheInternetUITest" />
+        </classes>
+    </test>
+    <test name="The Internet Login test" >
+        <classes>
+            <class name="theinternet.TheInternetLoginTest" />
+        </classes>
+    </test>
+</suite>
