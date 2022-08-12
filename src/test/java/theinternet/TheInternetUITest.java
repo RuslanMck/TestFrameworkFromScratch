@@ -3,18 +3,38 @@ package theinternet;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.util.Map;
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class TheInternetUITest {
 
     @BeforeClass
-    public void before() {
+    public void before() throws MalformedURLException {
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserVersion", "104.0");
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        RemoteWebDriver driver = new RemoteWebDriver(
+                URI.create("http://192.168.0.77:4444/wd/hub").toURL(),
+                capabilities
+        );
+        WebDriverRunner.setWebDriver(driver);
+
         Configuration.holdBrowserOpen = true;
         Selenide.open("https://the-internet.herokuapp.com/login");
     }

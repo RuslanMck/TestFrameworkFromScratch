@@ -11,4 +11,7 @@
             <class name="selenideexample.SelenideExampleTest"></class>
         </classes>
     </test>
+    <suite-files>
+        <suite-file path="theInternet.xml"></suite-file>
+    </suite-files>
 </suite>
