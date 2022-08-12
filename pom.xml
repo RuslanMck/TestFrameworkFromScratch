@@ -48,7 +48,7 @@
 
                     <suiteXmlFiles>
                         <!--> ссылка на xml файл с которого будут запускаться тесты <!-->
-                        <suiteXmlFile>suites/theInternet.xml</suiteXmlFile>
+                        <suiteXmlFile>suites/regression.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
