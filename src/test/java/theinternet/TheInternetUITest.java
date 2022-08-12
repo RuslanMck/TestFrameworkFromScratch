@@ -16,7 +16,10 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThanOrEqual;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TheInternetUITest {
 
@@ -36,7 +39,7 @@ public class TheInternetUITest {
         WebDriverRunner.setWebDriver(driver);
 
         Configuration.holdBrowserOpen = true;
-        Selenide.open("https://the-internet.herokuapp.com/login");
+        open("https://the-internet.herokuapp.com/login");
     }
 
     @Test (priority = 1)
@@ -80,6 +83,22 @@ public class TheInternetUITest {
         System.out.println("5");
 
     }
+    @Test
+    public void selenideTest1() {
+        open("https://google.com");
+        $("[name='q']")
+                .shouldBe(visible)
+                .setValue("Selenide")
+                .pressEnter();
+        $$x("//h3[contains(text(), 'Selenide')]")
+                .filter(visible)
+                .shouldHave(sizeGreaterThanOrEqual(7))
+                .get(1)
+                .click();
+        $(".donate_header")
+                .shouldHave(text("Selenide Supports Ukraine \uD83C\uDDFA\uD83C\uDDE6"));
+    }
+
 
 //    private void enterCredentials(String name, String password){
 //        $("#username").setValue(name);
